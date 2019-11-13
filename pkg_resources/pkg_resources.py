@@ -14,12 +14,13 @@ def resource_stream(package, resource):
             if package:
                 p = __import__(package)
                 d = p.__path__
+                c[package] = d + "/"
             else:
-                d = "."
+                d = ""
+                c[package] = ""
 #            if d[0] != "/":
 #                import uos
 #                d = uos.getcwd() + "/" + d
-            c[package] = d + "/"
 
     p = c[package]
     if isinstance(p, dict):
